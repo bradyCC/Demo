@@ -15,7 +15,7 @@ export default new Vuex.Store({
     dialog // 其他组件
   },
   mutations: { // 提交状态修改
-    increment (state, payload) {
+    increment: (state, payload) => {
       state.count += payload.amount
     }
   }

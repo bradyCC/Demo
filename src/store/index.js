@@ -7,6 +7,7 @@ Vue.use(Vuex)
 Vue.prototype.ajax = axios
 
 export default new Vuex.Store({
+  // strict: true,
   state: { // 存储状态
     show: true,
     count: 1

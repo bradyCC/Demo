@@ -1,6 +1,9 @@
 <template>
   <div class="demo">
     <template>
+      <!-- 分享vue-social-share start -->
+      <share :config="config"></share>
+      <!-- 分享 end -->
       <!-- nextTick用法 start -->
       <div ref="msgDiv">{{msg}}</div>
       <div v-if="msg1">Message got outside $nextTick: {{msg1}}</div>
@@ -26,7 +29,7 @@
               v-clipboard:success = "onCopy"
               v-clipboard:error = "onError"
       >一键复制</button>
-      <!-- 剪切板vue-clipboard2 end -->
+      <!-- 剪切板 end -->
     </template>
     <template>
       <!-- 懒加载vue-lazyload、图片查看vue-photo-preview start -->
@@ -46,6 +49,9 @@ export default {
   name: 'Demo',
   data () {
     return {
+      config: {
+        sites: ['qzone', 'qq', 'weibo', 'wechat']
+      },
       msg: 'Hello Vue.',
       msg1: '',
       msg2: '',

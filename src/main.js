@@ -11,12 +11,17 @@ import Preview from 'vue-photo-preview'
 import 'vue-photo-preview/dist/skin.css'
 // 懒加载
 import VueLazyLoad from 'vue-lazyload'
+// 分享
+import Share from 'vue-social-share'
+import 'vue-social-share/dist/client.css'
 // ElemntUI
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 // Mint-UI
 import MintUI from 'mint-ui'
 import 'mint-ui/lib/style.css'
+// 自定义弹窗插件
+import Toast from './plugin/toast'
 
 // Vue.config.silent = true // 取消Vue所有的日志与警告
 // Vue.config.devtools = true // 配置是否允许vue-devtools检查代码 生产版本设为true可以启用检查
@@ -30,8 +35,10 @@ Vue.use(VueLazyLoad, {
   loading: 'static/img/load.jpg', // 预加载图片
   attempt: 1 // 尝试加载图片数量
 })
+Vue.use(Share)
 Vue.use(ElementUI)
 Vue.use(MintUI)
+Vue.use(Toast)
 
 /* eslint-disable no-new */
 

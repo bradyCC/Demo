@@ -17,6 +17,9 @@ import Watch from '@/components/demo/watch'
 import PComponent from '@/components/demo/PComponent'
 import LifeCycle from '@/components/demo/LifeCycle'
 
+// Test
+import Test from '@/components/Test'
+
 Vue.use(Router)
 
 export default new Router({
@@ -28,6 +31,14 @@ export default new Router({
       component: Demo,
       meta: {
         title: 'Demo'
+      }
+    },
+    {
+      path: '/test',
+      name: 'Test',
+      component: Test,
+      meta: {
+        title: 'Test'
       }
     },
     {

@@ -18,8 +18,8 @@ import 'vue-social-share/dist/client.css'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 // Mint-UI
-import MintUI from 'mint-ui'
-import 'mint-ui/lib/style.css'
+// import MintUI from 'mint-ui'
+// import 'mint-ui/lib/style.css'
 // 自定义弹窗插件
 import Toast from './plugin/toast'
 
@@ -37,7 +37,7 @@ Vue.use(VueLazyLoad, {
 })
 Vue.use(Share)
 Vue.use(ElementUI)
-Vue.use(MintUI)
+// Vue.use(MintUI)
 Vue.use(Toast)
 
 /* eslint-disable no-new */

@@ -13,6 +13,8 @@ export default {
 </script>
 
 <style>
+@import './assets/main.css';
+@import './assets/normalize.css';
 * {
   margin: 0;
   padding: 0;

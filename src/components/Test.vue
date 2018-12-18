@@ -1,36 +1,47 @@
 <template>
   <div class="test" style="width: 1200px;">
-    <!--<div class="outer-box">-->
-      <!--<div class="inner-box" ref="inner"></div>-->
-      <!--<div class="inner-content">{{remainTime}}</div>-->
-    <!--</div>-->
-    <!--<ul>-->
-      <!--<li style="margin-top: 20px;" v-for="(item, index) in dataList" :key="index">-->
-        <!--<div class="outer-box">-->
-          <!--<div class="inner-box" :style="count[index]"></div>-->
-          <!--<div class="inner-content">{{item.remainTime}}</div>-->
-        <!--</div>-->
-      <!--</li>-->
-    <!--</ul>-->
-    <div class="el-col-20" >
-      <el-table :data="list" border :show-header="false" :cell-style="{'text-align':'center'}">
-        <el-table-column prop="buyer_wangwang" label="买手旺旺号"></el-table-column>
-        <el-table-column prop="type" label="申诉类型展示"></el-table-column>
-        <el-table-column prop="reason" label="申诉理由"></el-table-column>
-        <el-table-column label="凭证截图" prop="img1, img2" width="313">
-          <template slot-scope="scope">
-            <img :src="scope.row.img1" width="100" height="100"/>
-            <img :src="scope.row.img2" width="100" height="100">
-          </template>
-        </el-table-column>
-        <el-table-column prop="state" label="状态"></el-table-column>
-      </el-table>
+    <div class="outer-box" style="margin-top: 20px;">
+      <div class="inner-box" ref="inner"></div>
+      <div class="inner-content">{{remainTime}}</div>
     </div>
-
+    <ul>
+      <li style="margin-top: 20px;" v-for="(item, index) in dataList" :key="index">
+        <div class="outer-box">
+          <div class="inner-box" :style="count[index]"></div>
+          <div class="inner-content">{{item.remainTime}}</div>
+        </div>
+      </li>
+    </ul>
+    <div class="el-col-20">
+      <ul class="el_table_ul">
+        <li v-for="(item, index) in list" :key="index">
+          <el-table :data="Array(item)" border :header-cell-style="{'text-align':'center','font-weight':'normal'}" :cell-style="{'text-align':'center','color':'#333'}">
+            <el-table-column prop="buyer_wangwang" label="买手旺旺号"></el-table-column>
+            <el-table-column prop="type" label="申诉类型展示"></el-table-column>
+            <el-table-column prop="reason" label="申诉理由"></el-table-column>
+            <el-table-column label="凭证截图" prop="img1, img2" width="313">
+              <template slot-scope="scope">
+                <img :src="scope.row.img1" width="100" height="100" @click="showIMG(scope.row.img1)" style="margin-right: 20px;cursor: pointer;">
+                <img :src="scope.row.img2" width="100" height="100" @click="showIMG(scope.row.img2)" style="cursor: pointer;">
+              </template>
+            </el-table-column>
+            <el-table-column prop="state" label="状态">
+              <template slot-scope="scope">
+                <span v-if="scope.row.state == 0" style="color: #e45858;">待处理</span>
+                <span v-if="scope.row.state == 1" style="color: #e45858;">处理中</span>
+                <span v-if="scope.row.state == 2">完成</span>
+              </template>
+            </el-table-column>
+          </el-table>
+        </li>
+      </ul>
+    </div>
   </div>
 </template>
 
 <script>
+import {MessageBox} from 'element-ui'
+
 export default {
   name: 'Test',
   data () {
@@ -39,28 +50,28 @@ export default {
       datetime: '', // 接手任务时间
       remainTime: '', // 剩余时间
       dataList: [
-        {time: '2018-12-13 16:00:00'},
-        {time: '2018-12-13 16:00:00'},
-        {time: '2018-12-13 16:00:00'}
+        {time: '2018-12-18 14:00:00'},
+        {time: '2018-12-18 13:30:00'},
+        {time: '2018-12-18 13:00:00'}
       ],
       count: [], // 样式
       list: [
-        {shopname: '大众', taskno: 'sn222222', sub_taskno: '1234567890', buyer_wangwang: '大众', type: '让买手申请退款, 不放出', reason: '测试申诉理由', img1: 'static/img/1.jpg', img2: 'static/img/2.jpg', state: '待处理'},
-        {shopname: '大众', taskno: 'sn222222', sub_taskno: '1234567890', buyer_wangwang: '大众', type: '让买手申请退款, 不放出', reason: '测试申诉理由', img1: 'static/img/1.jpg', img2: 'static/img/2.jpg', state: '待处理'},
-        {shopname: '大众', taskno: 'sn222222', sub_taskno: '1234567890', buyer_wangwang: '大众', type: '让买手申请退款, 不放出', reason: '测试申诉理由', img1: 'static/img/1.jpg', img2: 'static/img/2.jpg', state: '待处理'},
-        {shopname: '大众', taskno: 'sn222222', sub_taskno: '1234567890', buyer_wangwang: '大众', type: '让买手申请退款, 不放出', reason: '测试申诉理由', img1: 'static/img/1.jpg', img2: 'static/img/2.jpg', state: '待处理'}
+        {shopname: '大众', taskno: 'sn222222', sub_taskno: '1234567890', buyer_wangwang: '大众', type: '让买手申请退款, 不放出', reason: '测试申诉理由', img1: 'static/img/1.jpg', img2: 'static/img/2.jpg', state: '0'},
+        {shopname: '大众', taskno: 'sn222222', sub_taskno: '1234567890', buyer_wangwang: '大众', type: '让买手申请退款, 不放出', reason: '测试申诉理由', img1: 'static/img/1.jpg', img2: 'static/img/2.jpg', state: '1'},
+        {shopname: '大众', taskno: 'sn222222', sub_taskno: '1234567890', buyer_wangwang: '大众', type: '让买手申请退款, 不放出', reason: '测试申诉理由', img1: 'static/img/1.jpg', img2: 'static/img/2.jpg', state: '2'},
+        {shopname: '大众', taskno: 'sn222222', sub_taskno: '1234567890', buyer_wangwang: '大众', type: '让买手申请退款, 不放出', reason: '测试申诉理由', img1: 'static/img/1.jpg', img2: 'static/img/2.jpg', state: '0'}
       ]
     }
   },
   computed: {
   },
   mounted () {
-    // this.datetime = '2018-12-13 16:00:00'
-    // this.getTime()
-    // setInterval(this.getTime, 1000)
+    this.datetime = '2018-12-18 14:00:00'
+    this.getTime()
+    setInterval(this.getTime, 1000)
 
-    // this.getMoreTime()
-    // setInterval(this.getMoreTime, 1000)
+    this.getMoreTime()
+    setInterval(this.getMoreTime, 1000)
   },
   methods: {
     getTime () {
@@ -106,6 +117,13 @@ export default {
           this.dataList[i].remainTime = `${hours}小时${minutes}分${seconds}秒`
         }
       }
+    },
+    // 点击查看图片
+    showIMG (url) {
+      MessageBox.alert(`<img src='${url}' width='100%' >`, '', {
+        dangerouslyUseHTMLString: true,
+        showClose: false
+      })
     }
   },
   watch: {
@@ -174,5 +192,8 @@ export default {
   width: 100%;
   position: absolute;
   z-index: 2;
+}
+.el_table_ul li {
+  margin-top: 20px;
 }
 </style>

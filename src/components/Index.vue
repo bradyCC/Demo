@@ -54,17 +54,17 @@
     </main>
 
     <!-- 实例方法 -->
-    <ul v-for="(item, index) in list" :key="index">
-      <li>{{item.name}}</li>
-      <button v-show="!item.isDisplay" @click="isShow(index)">显示更多</button>
-    </ul>
+    <!--<ul v-for="(item, index) in list" :key="index">-->
+      <!--<li>{{item.name}}</li>-->
+      <!--<button v-show="!item.isDisplay" @click="isShow(index)">显示更多</button>-->
+    <!--</ul>-->
 
-    <div id="watch">
-      firstName:<input type="text" name="li"  v-model="firstName">
-      <br>
-      lastName:<input type="text" name="fei"  v-model="lastName">
-      <p>fullName: {{fullName}}</p>
-    </div>
+    <!--<div id="watch">-->
+      <!--firstName:<input type="text" name="li"  v-model="firstName">-->
+      <!--<br>-->
+      <!--lastName:<input type="text" name="fei"  v-model="lastName">-->
+      <!--<p>fullName: {{fullName}}</p>-->
+    <!--</div>-->
 
   </div>
 </template>
@@ -131,7 +131,7 @@ export default {
       this.message = '123'
     },
     test () {
-      var funcs = []
+      let funcs = []
       for (let i = 0; i < 10; i++) {
         funcs.push(function () {
           console.log(i)
@@ -145,7 +145,9 @@ export default {
         const hours = now.getHours().toString()
         const minutes = now.getMinutes().toString()
         const seconds = now.getSeconds().toString()
+        // padStart()、padEnd() 一共接受两个参数，第一个参数用来指定字符串的最小长度，第二个参数是用来补全的字符串。
         console.log(`${hours.padStart(2, 0)}:${minutes.padStart(2, 0)}:${seconds.padStart(2, 0)}`)
+        console.log(Object.prototype.toString.call(hours))
       }, 1000)
     },
     test2 () {

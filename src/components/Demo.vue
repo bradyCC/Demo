@@ -35,7 +35,7 @@
       <!-- 懒加载vue-lazyload、图片查看vue-photo-preview start -->
       <ul>
         <li v-for="(item, index) in imgList" :key="index">
-          <img v-lazy="item" src="" alt="" Preview="index" width="500" height="500">
+          <img v-lazy="item" src="" alt="" Preview="index" width="500" height="500" style="cursor: pointer;">
         </li>
       </ul>
       <!-- 懒加载、图片查看 end -->

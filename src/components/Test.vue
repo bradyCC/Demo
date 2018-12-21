@@ -50,9 +50,9 @@ export default {
       datetime: '', // 接手任务时间
       remainTime: '', // 剩余时间
       dataList: [
-        {time: '2018-12-18 14:00:00'},
-        {time: '2018-12-18 13:30:00'},
-        {time: '2018-12-18 13:00:00'}
+        {time: '2018-12-21 09:00:00'},
+        {time: '2018-12-21 09:30:00'},
+        {time: '2018-12-21 09:00:00'}
       ],
       count: [], // 样式
       list: [
@@ -66,7 +66,7 @@ export default {
   computed: {
   },
   mounted () {
-    this.datetime = '2018-12-18 14:00:00'
+    this.datetime = '2018-12-21 09:00:00'
     this.getTime()
     setInterval(this.getTime, 1000)
 

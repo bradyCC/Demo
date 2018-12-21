@@ -1,6 +1,14 @@
 <template>
   <div class="demo">
     <template>
+      <!-- 生成二维码 qrcodejs2 start -->
+      <h1>二维码2</h1>
+      <div id="qrcode"></div>
+      <!-- 生成二维码 end -->
+      <!-- 生成二维码 qrcode start -->
+      <h1>二维码</h1>
+      <canvas id="canvas"></canvas>
+      <!-- 生成二维码 end -->
       <!-- 分享vue-social-share start -->
       <share :config="config"></share>
       <!-- 分享 end -->
@@ -45,6 +53,9 @@
 
 <script>
 import { Message } from 'element-ui'
+import QrCode from 'qrcode'
+import QRCode from 'qrcodejs2'
+
 export default {
   name: 'Demo',
   data () {
@@ -66,6 +77,8 @@ export default {
       isShow: false,
       time: '60'
     }
+  },
+  components: {
   },
   // 组件实例被创建, 组件属性计算之前, 如data属性等
   beforeCreate () {
@@ -103,6 +116,8 @@ export default {
     // console.log(this.$el) // DOM
     // console.log('%c%s', 'color:red', 'data   : ' + this.$data) // 已初始化
     // console.log('%c%s', 'color:red', 'message: ' + this.message) // 已初始化
+    this.qrcode()
+    this.qrcode2()
   },
   // 组件更新之前
   beforeUpdate () {
@@ -190,6 +205,24 @@ export default {
         duration: 1500,
         type: 'error'
       })
+    },
+    // 生成二维码
+    qrcode () {
+      let qrcode = document.getElementById('canvas')
+      QrCode.toCanvas(qrcode, 'http://www.baidu.com', err => {
+        if (err) console.error(err)
+        console.log('success!')
+      })
+    },
+    // 生成二维码
+    qrcode2 () {
+      let qrcode = new QRCode('qrcode', {
+        width: 100,
+        height: 100,
+        text: 'http://www.baidu.com',
+        image: ''
+      })
+      console.log(qrcode)
     }
   },
   // 过滤器

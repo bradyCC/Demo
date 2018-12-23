@@ -20,6 +20,9 @@ import LifeCycle from '@/components/demo/LifeCycle'
 // Test
 import Test from '@/components/Test'
 
+// Example
+import Example from '@/components/example'
+
 Vue.use(Router)
 
 export default new Router({
@@ -39,6 +42,14 @@ export default new Router({
       component: Test,
       meta: {
         title: 'Test'
+      }
+    },
+    {
+      path: '/example',
+      name: 'Example',
+      component: Example,
+      meta: {
+        title: 'Example'
       }
     },
     {

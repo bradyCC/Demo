@@ -60,6 +60,10 @@ export default {
   name: 'Demo',
   data () {
     return {
+      n1: 0,
+      n2: 0,
+      reslut: 0,
+      opt: '+',
       config: {
         sites: ['qzone', 'qq', 'weibo', 'wechat']
       },

@@ -1,5 +1,9 @@
 <template>
   <div class="test" style="width: 1200px;">
+    <div class="upload">
+    <input type="file" class="uploadinput">
+    <img :src="imgurl" alt="">
+  </div>
     <div class="outer-box" style="margin-top: 20px;">
       <div class="inner-box" ref="inner"></div>
       <div class="inner-content">{{remainTime}}</div>
@@ -60,7 +64,8 @@ export default {
         {shopname: '大众', taskno: 'sn222222', sub_taskno: '1234567890', buyer_wangwang: '大众', type: '让买手申请退款, 不放出', reason: '测试申诉理由', img1: 'static/img/1.jpg', img2: 'static/img/2.jpg', state: '1'},
         {shopname: '大众', taskno: 'sn222222', sub_taskno: '1234567890', buyer_wangwang: '大众', type: '让买手申请退款, 不放出', reason: '测试申诉理由', img1: 'static/img/1.jpg', img2: 'static/img/2.jpg', state: '2'},
         {shopname: '大众', taskno: 'sn222222', sub_taskno: '1234567890', buyer_wangwang: '大众', type: '让买手申请退款, 不放出', reason: '测试申诉理由', img1: 'static/img/1.jpg', img2: 'static/img/2.jpg', state: '0'}
-      ]
+      ],
+      imgurl: `/static/img/file_bg.png`
     }
   },
   computed: {
@@ -74,6 +79,9 @@ export default {
     setInterval(this.getMoreTime, 1000)
   },
   methods: {
+    imageuploaded (res) {
+
+    },
     getTime () {
       let dateBegin = new Date()
       let dateEnd = new Date(this.datetime).getTime() + this.finishTime * 1000
@@ -138,6 +146,17 @@ export default {
 </script>
 
 <style>
+.upload {
+  width: 160px;
+  height: 160px;
+  position: relative;
+}
+.upload input[type='file'] {
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  position: absolute;
+}
 .center {
   display: flex;
   align-items: center;

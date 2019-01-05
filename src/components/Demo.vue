@@ -223,8 +223,7 @@ export default {
       let qrcode = new QRCode('qrcode', {
         width: 100,
         height: 100,
-        text: 'http://www.baidu.com',
-        image: ''
+        text: 'http://www.baidu.com'
       })
       console.log(qrcode)
     }

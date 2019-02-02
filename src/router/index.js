@@ -20,6 +20,9 @@ import LifeCycle from '@/components/demo/LifeCycle'
 // Test
 import Test from '@/components/Test'
 
+// ES6
+import ES6 from '@/components/es6'
+
 // Example
 import Example from '@/components/example'
 
@@ -138,6 +141,14 @@ export default new Router({
       component: Mintui,
       meta: {
         title: 'Mint-UI'
+      }
+    },
+    {
+      path: '/es6',
+      name: 'es6',
+      component: ES6,
+      meta: {
+        title: 'ES6'
       }
     }
   ],

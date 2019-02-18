@@ -26,6 +26,9 @@ import ES6 from '@/components/es6'
 // Example
 import Example from '@/components/example'
 
+// EchartsDemo
+import EChartDemo from '@/components/EChartDemo'
+
 Vue.use(Router)
 
 export default new Router({
@@ -33,7 +36,15 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'demo',
+      name: 'EChartDemo',
+      component: EChartDemo,
+      meta: {
+        title: 'EChartDemo'
+      }
+    },
+    {
+      path: '/demo',
+      name: 'Demo',
       component: Demo,
       meta: {
         title: 'Demo'

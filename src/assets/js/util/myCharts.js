@@ -3,33 +3,11 @@
  */
 
 import echarts from 'echarts'
-const install = function (Vue) {
+const install = Vue => {
   Object.defineProperties(Vue.prototype, {
     $chart: {
       get () {
         return {
-          // 画一条简单的线
-          line1: function (id) {
-            this.chart = echarts.init(document.getElementById(id))
-            this.chart.clear()
-
-            const optionData = {
-              xAxis: {
-                type: 'category',
-                data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
-              },
-              yAxis: {
-                type: 'value'
-              },
-              series: [{
-                data: [820, 932, 901, 934, 1290, 1330, 1320],
-                type: 'line',
-                smooth: true
-              }]
-            }
-
-            this.chart.setOption(optionData)
-          },
           // DEMO
           demo: id => {
             this.chart = echarts.init(document.getElementById(id))
@@ -114,6 +92,225 @@ const install = function (Vue) {
               hoverLayerThreshold: {},
               // 是否使用 UTC 时间。
               userUTC: {}
+            }
+
+            this.chart.setOption(optionData)
+          },
+          // Basic Line Chart
+          line1: id => {
+            this.chart = echarts.init(document.getElementById(id))
+            this.chart.clear()
+
+            const optionData = {
+              title: {
+                text: 'Basic Line Chart',
+                textStyle: {
+                  color: '#f00',
+                  textBorderColor: '#ff0'
+                }
+              },
+              // 直角坐标系grid中的x轴
+              xAxis: {
+                type: 'category', // 坐标轴类型 'value'-数据轴 'category'-类目轴 'time'-时间轴 'log'-对数轴
+                data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'] // 类目数据, 在类目轴（type: 'category'）中有效
+              },
+              // 直角坐标系grid中的y轴
+              yAxis: {
+                type: 'value' // 坐标轴类型 'value'-数据轴 'category'-类目轴 'time'-时间轴 'log'-对数轴
+              },
+              // 系列列表。每个系列通过 type 决定自己的图表类型
+              series: [{
+                data: [820, 932, 901, 934, 1290, 1330, 1320],
+                type: 'line' // 折线/面积图
+              }]
+            }
+
+            this.chart.setOption(optionData)
+          },
+          // Basic Area Chart
+          line2: id => {
+            this.chart = echarts.init(document.getElementById(id))
+            this.chart.clear()
+
+            const optionData = {
+              title: {
+                text: 'Basic Area Chart'
+              },
+              // 直角坐标系grid中的x轴
+              xAxis: {
+                type: 'category', // 坐标轴类型 'value'-数据轴 'category'-类目轴 'time'-时间轴 'log'-对数轴
+                boundaryGap: false, // 类目轴中 boundaryGap 可以配置为 true 和 false。默认为 true，这时候刻度只是作为分隔线，标签和数据点都会在两个刻度之间的带(band)中间。
+                data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'] // 类目数据, 在类目轴（type: 'category'）中有效
+              },
+              // 直角坐标系grid中的y轴
+              yAxis: {
+                type: 'value' // 坐标轴类型 'value'-数据轴 'category'-类目轴 'time'-时间轴 'log'-对数轴
+              },
+              // 系列列表。每个系列通过 type 决定自己的图表类型
+              series: [{
+                data: [820, 932, 901, 934, 1290, 1330, 1320],
+                type: 'line', // 折线/面积图
+                areaStyle: {}
+              }]
+            }
+
+            this.chart.setOption(optionData)
+          },
+          // Smoothed Line Chart
+          line3: id => {
+            this.chart = echarts.init(document.getElementById(id))
+            this.chart.clear()
+
+            const optionData = {
+              title: {
+                text: 'Smoothed Line Chart'
+              },
+              // 直角坐标系grid中的x轴
+              xAxis: {
+                type: 'category', // 坐标轴类型 'value'-数据轴 'category'-类目轴 'time'-时间轴 'log'-对数轴
+                boundaryGap: false, // 类目轴中 boundaryGap 可以配置为 true 和 false。默认为 true，这时候刻度只是作为分隔线，标签和数据点都会在两个刻度之间的带(band)中间。
+                data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'] // 类目数据, 在类目轴（type: 'category'）中有效
+              },
+              // 直角坐标系grid中的y轴
+              yAxis: {
+                type: 'value' // 坐标轴类型 'value'-数据轴 'category'-类目轴 'time'-时间轴 'log'-对数轴
+              },
+              // 系列列表。每个系列通过 type 决定自己的图表类型
+              series: [{
+                data: [820, 932, 901, 934, 1290, 1330, 1320],
+                type: 'line', // 折线/面积图
+                smooth: true // 是否平滑曲线显示。
+              }]
+            }
+
+            this.chart.setOption(optionData)
+          },
+          // Basic Bar Chart
+          bar1: id => {
+            this.chart = echarts.init(document.getElementById(id))
+            this.chart.clear()
+
+            const optionData = {
+              title: {
+                text: 'Basic Bar Chart'
+              },
+              tooltip: {},
+              xAxis: {
+                data: ['iOS', 'Vue', 'Java', 'GO']
+              },
+              yAxis: {},
+              series: [{
+                name: '热度',
+                type: 'bar',
+                data: [5, 6, 9, 6]
+              }]
+            }
+            this.chart.setOption(optionData)
+          },
+          // Customized Pie
+          pie1: id => {
+            this.chart = echarts.init(document.getElementById(id))
+            this.chart.clear()
+
+            const optionData = {
+              backgroundColor: '#2c343c',
+              title: {
+                text: 'Customized Pie',
+                left: 'center',
+                top: 20,
+                textStyle: {
+                  color: '#ccc'
+                }
+              },
+              // 提示框组件。
+              tooltip: {
+                trigger: 'item', // 数据项图形触发，主要在散点图，饼图等无类目轴的图表中使用。
+                formatter: '{a} <br/>{b} : {c} ({d}%)' // 字符串模板
+              },
+              // visualMap 是视觉映射组件，用于进行『视觉编码』，也就是将数据映射到视觉元素（视觉通道）。
+              visualMap: {
+                show: false,
+                min: 80,
+                max: 600,
+                inRange: {
+                  colorLightness: [0, 1]
+                }
+              },
+              series: [
+                {
+                  name: '访问来源',
+                  type: 'pie',
+                  radius: '55%',
+                  center: ['50%', '50%'],
+                  data: [
+                    {value: 335, name: '直接访问'},
+                    {value: 310, name: '邮件营销'},
+                    {value: 274, name: '联盟广告'},
+                    {value: 235, name: '视频广告'},
+                    {value: 400, name: '搜索引擎'}
+                  ].sort(function (a, b) { return a.value - b.value }),
+                  roseType: 'radius',
+                  label: {
+                    normal: {
+                      textStyle: {
+                        color: 'rgba(255, 255, 255, 0.3)'
+                      }
+                    }
+                  },
+                  labelLine: {
+                    normal: {
+                      lineStyle: {
+                        color: 'rgba(255, 255, 255, 0.3)'
+                      },
+                      smooth: 0.2,
+                      length: 10,
+                      length2: 20
+                    }
+                  },
+                  itemStyle: {
+                    normal: {
+                      color: '#c23531',
+                      shadowBlur: 200,
+                      shadowColor: 'rgba(0, 0, 0, 0.5)'
+                    }
+                  },
+
+                  animationType: 'scale',
+                  animationEasing: 'elasticOut',
+                  animationDelay: function (idx) {
+                    return Math.random() * 200
+                  }
+                }
+              ]
+            }
+
+            this.chart.setOption(optionData)
+          },
+          // Basic Scatter Chart
+          scatter1: id => {
+            this.chart = echarts.init(document.getElementById(id))
+            this.chart.clear()
+
+            const optionData = {
+              xAxis: {},
+              yAxis: {},
+              series: [{
+                symbolSize: 20,
+                data: [
+                  [10.0, 8.04],
+                  [8.0, 6.95],
+                  [13.0, 7.58],
+                  [9.0, 8.81],
+                  [11.0, 8.33],
+                  [14.0, 9.96],
+                  [6.0, 7.24],
+                  [4.0, 4.26],
+                  [12.0, 10.84],
+                  [7.0, 4.82],
+                  [5.0, 5.68]
+                ],
+                type: 'scatter'
+              }]
             }
 
             this.chart.setOption(optionData)

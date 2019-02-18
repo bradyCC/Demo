@@ -13,7 +13,7 @@ export default {
     }
   },
   mounted () {
-    this.$chart.line1('chart1')
+    this.$chart.line('chart1')
     this.$chart.demo('demo')
   }
 }

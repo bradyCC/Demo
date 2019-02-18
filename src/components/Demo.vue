@@ -1,6 +1,12 @@
 <template>
   <div class="demo">
     <template>
+      <!-- Echarts start -->
+      <MyCharts></MyCharts>
+      <!-- Echarts end -->
+      <!-- vue-echarts start -->
+      <ECharts></ECharts>
+      <!-- vue-echarts end -->
       <!-- 生成二维码 qrcodejs2 start -->
       <h1>二维码2</h1>
       <div id="qrcode"></div>
@@ -55,6 +61,8 @@
 import { Message } from 'element-ui'
 import QrCode from 'qrcode'
 import QRCode from 'qrcodejs2'
+import MyCharts from './demo/MyCharts'
+import ECharts from './demo/ECharts'
 
 export default {
   name: 'Demo',
@@ -83,6 +91,8 @@ export default {
     }
   },
   components: {
+    MyCharts,
+    ECharts
   },
   // 组件实例被创建, 组件属性计算之前, 如data属性等
   beforeCreate () {

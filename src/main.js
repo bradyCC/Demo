@@ -22,6 +22,11 @@ import 'element-ui/lib/theme-chalk/index.css'
 // import 'mint-ui/lib/style.css'
 // 自定义弹窗插件
 import Toast from './plugin/toast'
+// 自定义Echarts插件
+import myCharts from './assets/js/util/myCharts'
+// vue-echarts插件
+import ECharts from 'vue-echarts/components/ECharts'
+import 'echarts/lib/chart/line'
 
 // Vue.config.silent = true // 取消Vue所有的日志与警告
 // Vue.config.devtools = true // 配置是否允许vue-devtools检查代码 生产版本设为true可以启用检查
@@ -39,6 +44,8 @@ Vue.use(Share)
 Vue.use(ElementUI)
 // Vue.use(MintUI)
 Vue.use(Toast)
+Vue.use(myCharts)
+Vue.component('chart', ECharts)
 
 /* eslint-disable no-new */
 

@@ -22,6 +22,9 @@ export default {
       ]
     }
   },
+  mounted () {
+
+  },
   methods: {
     del (id) {
       this.list.some((item, index) => {

@@ -1,6 +1,7 @@
 <template>
   <div class="">
     <div id="chart1"></div>
+    <div id="demo"></div>
   </div>
 </template>
 
@@ -13,6 +14,7 @@ export default {
   },
   mounted () {
     this.$chart.line1('chart1')
+    this.$chart.demo('demo')
   }
 }
 </script>
@@ -21,5 +23,9 @@ export default {
 #chart1 {
   width: 300px;
   height: 300px;
+}
+#demo {
+  /*width: 600px;*/
+  /*height: 400px;*/
 }
 </style>

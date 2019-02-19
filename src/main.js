@@ -27,8 +27,14 @@ import myCharts from './assets/js/util/myCharts'
 // vue-echarts插件
 import ECharts from 'vue-echarts/components/ECharts'
 import 'echarts/lib/chart/line'
+// vue-amap高德地图
+import VueAMap from 'vue-amap'
 
-// Vue.config.silent = true // 取消Vue所有的日志与警告
+// 引入nprogress
+import NProgress from 'nprogress'
+import 'nprogress/nprogress.css' // 这个样式必须引入
+
+Vue.config.silent = true // 取消Vue所有的日志与警告
 // Vue.config.devtools = true // 配置是否允许vue-devtools检查代码 生产版本设为true可以启用检查
 
 Vue.config.productionTip = false
@@ -46,6 +52,35 @@ Vue.use(ElementUI)
 Vue.use(Toast)
 Vue.use(myCharts)
 Vue.component('chart', ECharts)
+Vue.use(VueAMap)
+VueAMap.initAMapApiLoader({
+  key: 'YOUR_KEY',
+  plugin: [
+    'AMap.Autocomplete', // 输入提示插件
+    'AMap.PlaceSearch', // POI搜索插件
+    'AMap.Scale', // 右下角缩略图插件 比例尺
+    'AMap.OverView', // 地图鹰眼插件
+    'AMap.ToolBar', // 地图工具条
+    'AMap.MapType', // 类别切换控件，实现默认图层与卫星图、实施交通图层之间切换的控制
+    'AMap.PolyEditor', // 编辑 折线多，边形
+    'AMap.CircleEditor', // 圆形编辑器插件
+    'AMap.Geolocation' // 定位控件，用来获取和展示用户主机所在的经纬度位置
+  ],
+  v: '1.4.4'
+})
+
+// 简单配置
+NProgress.inc(0.2)
+NProgress.configure({ easing: 'ease', speed: 500, showSpinner: false })
+
+router.beforeEach((to, from, next) => {
+  NProgress.start()
+  next()
+})
+
+router.afterEach(() => {
+  NProgress.done()
+})
 
 /* eslint-disable no-new */
 

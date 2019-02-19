@@ -28,7 +28,8 @@ import Example from '@/components/example'
 
 // EchartsDemo
 import EChartDemo from '@/components/EChartDemo'
-
+// MapDemo
+import MapDemo from '@/components/MapDemo'
 Vue.use(Router)
 
 export default new Router({
@@ -36,6 +37,14 @@ export default new Router({
   routes: [
     {
       path: '/',
+      name: 'MapDemo',
+      component: MapDemo,
+      meta: {
+        title: 'MapDemo'
+      }
+    },
+    {
+      path: '/echartdemo',
       name: 'EChartDemo',
       component: EChartDemo,
       meta: {
